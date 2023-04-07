@@ -7,7 +7,7 @@ from aiogram.utils.markdown import text, bold, italic, code, pre
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from datetime import datetime
 import re
-path_to_file = "C:/Users/Engineer/"
+path_to_file = "C:/Users/Engineer/tele_bot_fire/"
 TOKEN = cfg.TOKEN
 map_today = cfg.map_today
 map_week = cfg.map_week
@@ -74,18 +74,6 @@ def log(message):
     fileName_log = message.from_user.full_name
     with open(path_to_file + fileName_log + '.log', 'a') as file_log:
         print(datetime.now(), message.text, file = file_log)
-
-# @dp.callback_query_handler(func = lambda c: c.data == "subscribe")
-# async def process_callback_subscribe(callback_query: types.CallbackQuery):
-#     await bot.answer_callback_query(callback_query.id)
-#     if not check_user(callback_query):
-#         print("Пользователя нет, записываем")
-#         write_user(callback_query)
-#         await bot.send_message(callback_query.from_user.id, "Уведомления будут направляться каждые 24 часа.")
-#     else:
-#         print("Пользователь уже есть")
-#         clear_user(callback_query)
-#         await bot.send_message(callback_query.from_user.id, "Уведомления отключены.")
 
 @dp.message_handler(commands=['help'])
 async def process_help_command(message: types.Message):
